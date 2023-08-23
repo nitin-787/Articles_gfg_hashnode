@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Docker Toolbox</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="db2ef89e-d4f4-4ca9-8030-3779770bfdd5" class="page sans"><header><h1 class="page-title">Docker Toolbox</h1><p class="page-description"></p></header><div class="page-body"><p id="93f192fb-3a70-4300-8a8c-743a425ea1a1" class="">
+</p><h1 id="c4a898a0-9ed3-42f5-a705-0c1770af2084" class="">Introduction:</h1><p id="71b82277-3eeb-4078-8ed7-6c0cac970ffe" class="">
+</p><p id="f568c998-871a-4a6c-8ad2-b2cc9e1d820f" class="">Docker is a platform that simplifies the process of creating, deploying, and running applications by using containers. Containers allow developers to package up an application and its dependencies into a single unit, which can then be deployed to any environment without the need for modification. Docker Toolbox is a legacy solution that provides an alternative for older operating systems that don&#x27;t support Docker natively. It is a toolset that allows you to install Docker on older Mac and Windows systems that do not meet the system requirements of Docker Desktop.</p><p id="c6829733-52d9-4eea-9c10-e95c726872e9" class="">In this article, we will discuss how to install and set up Docker Toolbox on your machine.</p><p id="975664c1-317f-4d52-8577-5b30889b736b" class="">
+</p><p id="daaa3874-69d9-4abe-8616-0ef2a3358d43" class="">In this article, we will discuss how to install and set up Docker Toolbox on your machine.</p><p id="c77fd4db-1f58-42c7-81bc-7f749c62b703" class="">
+</p><h3 id="28931848-e454-4ca2-83bf-e86169fc258a" class="">Steps to Install Docker Toolbox:</h3><ul id="3c652b2b-d90c-40c8-8464-5736e69fcd1f" class="bulleted-list"><li style="list-style-type:disc">Step 1: Go to the Docker Toolbox page (<a href="https://github.com/docker-archive/toolbox/releases">https://github.com/docker-archive/toolbox/releases</a>) and download the installer for Windows.</li></ul><p id="dd6566c3-daa4-4296-8975-7635d536f8a3" class=""><div class="indented"><figure id="c80e102f-a6d6-4a41-9b67-6705c536541a" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Group_1.png"><img style="width:721px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Group_1.png"/></a></figure></div></p><p id="b9b8a9ff-6525-4b45-8ae0-f0563e1b56f1" class="">
+</p><ul id="849c059d-f9da-4762-b7b3-fbb21d0cad97" class="bulleted-list"><li style="list-style-type:disc">Step 2: Double-click on the downloaded file to start the installation process. Follow the instructions on the screen to complete the installation process.<figure id="b9f55f2b-2e35-47d3-9f24-1f74135f310b" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175308.png"><img style="width:567px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175308.png"/></a></figure><figure id="283959d1-2a90-4001-8302-4eed21a34639" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175350.png"><img style="width:578px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175350.png"/></a></figure><figure id="8d356912-a6fa-4d44-9a1c-33d85e1b00c1" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175408.png"><img style="width:586px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175408.png"/></a></figure></li></ul><ul id="4bbde632-ea46-4df0-b4d3-6af223dbe4b0" class="bulleted-list"><li style="list-style-type:disc">Step 3: Once the installation is complete, open the Docker Toolbox by clicking on the Docker Quickstart Terminal icon on your desktop.<figure id="b2ec8358-766a-4acb-91b2-d26bbe0a9ac1" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175511.png"><img style="width:113px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175511.png"/></a></figure></li></ul><ul id="745e7aa6-e472-45a0-9e63-834a9c197577" class="bulleted-list"><li style="list-style-type:disc">Step 4: The Docker Quickstart Terminal will launch a virtual machine and start the Docker daemon inside it. This process may take a few minutes.</li></ul><ul id="d0435eeb-df27-434e-bce9-0e5998e3d091" class="bulleted-list"><li style="list-style-type:disc">Step 5: After the virtual machine has started, you should see a terminal window with the following output:<figure id="72b91dce-d89f-4ed6-b916-e3d0b1c5e4e9" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175847.png"><img style="width:1903px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175847.png"/></a></figure></li></ul><p id="57dfdab6-6ea2-4cfc-b2eb-56cc40452dd9" class="">
+</p><p id="c7213257-3901-42a0-8718-c9f0ff34bea7" class=""><strong>NOTE: But in some cases you might face an error like this:</strong></p><figure id="69cb95c4-c250-4c12-88bf-4d675f870259" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175714.png"><img style="width:1447px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175714.png"/></a></figure><p id="fd8cf8f3-ee65-4c41-88c6-3d6808df560f" class="">
+</p><p id="00f8334a-0d60-4d19-bb21-355ea779df96" class="">to remove this error you need to use two commands in cmd (win + r)</p><pre id="0de5ecf0-2b89-4c91-9fd6-ef88332d594f" class="code code-wrap"><code> docker-machine create -d virtualbox --virtualbox-memory=4096
+</code></pre><p id="071ce8ea-e870-40f8-ad44-211a48085f93" class="">then:</p><pre id="e1960f48-6c22-4e31-8fc9-a4b54927acfe" class="code code-wrap"><code>  docker-machine create -d virtualbox --virtualbox-no-vtx-check default</code></pre><figure id="e67da3b2-ecd9-4c7c-a272-45f1ff2017d1" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175753.png"><img style="width:452px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175753.png"/></a></figure><p id="f6906cc0-c74d-4e36-8cac-9e23e5617912" class="">
+</p><figure id="44136372-db3a-4b65-ba8d-4edd85e6ee13" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175847%201.png"><img style="width:1903px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_175847%201.png"/></a></figure><p id="43da7004-3ae4-45d0-97d6-2bade4f22655" class="">Ta-da!! Docker toolbox is installed in your system</p><ul id="33c6f10b-c1e7-4859-ab2d-fb31eae39624" class="bulleted-list"><li style="list-style-type:disc">Step 6: Once the Docker daemon is running, you can start using Docker Toolbox to create and manage containers. To verify that Docker Toolbox is working correctly, open a new terminal window and type the command <code>docker version</code>. This should display the version of Docker that is installed on your system.<figure id="f9b296aa-1375-4b98-849f-2b2b16553dde" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_180002.png"><img style="width:955px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_180002.png"/></a></figure><figure id="3677b6c7-eb6f-4d7f-adeb-4f46f0004c7c" class="image"><a href="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_180239.png"><img style="width:1013px" src="Docker%20Toolbox%20db2ef89ed4f44ca980303779770bfdd5/Screenshot_2023-03-23_180239.png"/></a></figure><p id="a3c4d026-3b05-4379-a28f-1b198df097bc" class="">
+</p><p id="125d4917-a698-4d81-9737-eb2dd12eef0c" class="">Did you see that we also ran a command</p><pre id="1beb07e0-118c-4a0d-9daf-5cf287f8c281" class="code"><code>docker run hello-world</code></pre><p id="7774266d-3661-483a-9681-9ae6bb6c10f8" class="">
+</p><p id="1b67350d-b9d9-46c1-8e6a-9c4bc451ff43" class="">What was it?</p><p id="a3b76160-d54c-44a4-91b9-6d659fce0855" class="">With Docker, you can now easily create, deploy, and run applications in a containerized environment. This provides numerous benefits, including improved consistency, portability, and scalability of your applications.</p><p id="15546d2f-eef5-4c23-8107-33db25be8089" class="">Now that you have Docker Toolbox installed, you can start using it to create and manage containers. One useful command to know is <code>docker ps</code>, which displays a list of running containers on your system. You can also use the <code>docker images</code> command to see a list of images that are available locally.</p><p id="0898f370-6505-4ad8-8e95-9d1d63387dd7" class="">
+</p><p id="6925b417-92b4-4cc8-9fe6-df1a65bb1dfa" class="">What is docker image?</p><p id="f1fe60bb-c065-402d-b19c-70eac5a9496a" class="">Docker images are an essential component of the Docker platform, and they play a crucial role in simplifying the process of creating, deploying, and running applications in a containerized environment. A Docker image is essentially a read-only template that contains a set of instructions for creating a Docker container. These instructions include the code, a runtime, libraries, environment variables, and configuration files required to run an application.</p><p id="3f711c08-4bed-473d-b525-36cd00774d4e" class="">Using Docker images, developers can easily package up an application and all of its dependencies into a single unit, which can then be deployed to any environment without the need for modification. This provides numerous benefits, including improved consistency, portability, and scalability of your applications.</p><p id="1e8b4171-c3b9-4c33-8a69-7cdc591f57f2" class="">Docker images are stored in a registry, such as Docker Hub, which is a public repository for Docker images. Docker Hub is a central hub for sharing and distributing Docker images, and it contains thousands of images that you can use to create your own containers.</p><p id="d5f00a3a-4d9d-4d05-a1be-eef765f0094b" class="">When you run a Docker container, Docker creates a read-write layer on top of the image, allowing you to modify the container&#x27;s state without affecting the original image. This makes it easy to create and manage multiple instances of the same application without having to create a new image for each instance.</p><p id="eb872194-e620-4f24-ab60-2c87aa489592" class="">Overall, Docker images are a powerful tool that simplifies the process of creating, deploying, and running applications in a containerized environment. By using Docker images, developers can save time and improve the consistency, portability, and scalability of their applications.</p></li></ul></div></article></body></html>
